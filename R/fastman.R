@@ -104,7 +104,7 @@ fastman <- function(data, chr="CHR", ps="BP", p="P", main="fastman", suggest_lin
     # Calculate position information for SNPs on chromosome 2 and after.
     data$ps2 <- NA
     for (i in chr_n){
-        data[which(data$chr==i),"ps2"] <- data[which(data[,chr]==i),"ps"] + chr_base[i]
+        data[which(data$chr==i),"ps2"] <- data[which(data[,chr]==i),ps] + chr_base[i]
     }
     # Set colors
     data$colors <- NA
