@@ -1,0 +1,10 @@
+Package: fastman
+Type: Package
+Title: A package to create Manhattan plots
+Version: 0.1.0
+Author: Daniel Liang-Dar Hwang
+Maintainer: Daniel Liang-Dar Hwang <danielldhwang@gmail.com>
+Description: It generates Manhattan plots from GWAS summaries in a fast way.
+License: What license is it under?
+LazyData: TRUE
+RoxygenNote: 5.0.1
