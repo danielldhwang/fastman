@@ -4,16 +4,16 @@
 \alias{fastman}
 \title{fastman}
 \usage{
-fastman(data, chr = "CHR", ps = "BP", p = "P", main = "fastman",
-  suggest_line = T, gws_line = T, turbo = T, color = c("grey", "black"),
-  chr_build = "GRCh37", yscale = NA)
+fastman(data, chr = "CHR", ps = "BP", p = "P", main = "Manhattan plot",
+  suggest_line = T, gws_line = T, color = c("grey", "black"),
+  chr_build = "GRCh37", yscale = NA, xlab_all = F, turbo = F)
 }
 \arguments{
 \item{data}{A GWAS summary with columns of chromosome number, position (base pair) information, and P-value.}
 
 \item{chr}{A string for the header of the column of chromosome number in data.}
 
-\item{ps}{A string for the header of the column of base pair information in data.}
+\item{ps}{A string for the header of the column of position (base pair) information in data.}
 
 \item{p}{A string for the header for the column of P-value in data.}
 
@@ -23,13 +23,15 @@ fastman(data, chr = "CHR", ps = "BP", p = "P", main = "fastman",
 
 \item{gws_line}{Set FALSE to remove the genome-wide significant line (p = 5e-8).}
 
-\item{turbo}{Set TRUE to remove all rows with P <= 0.1.}
-
 \item{color}{A string vector containg the colors to be used.}
 
 \item{chr_build}{A string describing what Genetic Reference Consortium build is used. It has to be either "GRCh37" or "CRCh38".}
 
 \item{yscale}{A numeric value for y scale.}
+
+\item{xlab_all}{Set TRUE to show labels for all chromosomes.}
+
+\item{turbo}{Set TRUE to remove all rows with P <= 0.1.}
 }
 \description{
 Creates Manhattan plots from GWAS summaries.
