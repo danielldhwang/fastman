@@ -9,6 +9,7 @@ output: rmarkdown::html_vignette
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 -->
+# Intro to the fastman package
 ```{r}
 library(qqman)
 
@@ -38,11 +39,11 @@ while(i<length(chr_base)){
 
 ```
 The testdata contains three columns: CHR, BP, and P. Now create a Manhattan plot using the fastman function.
+If your own dataset has different column names, use the option (chr="",ps="",p="").
 ```{r}
 fastman(testdata)
 ```
-Now create a Q-Q plot using the fastqq 
+Now create a Q-Q plot using the fastqq function.
 ```{r}
-function.
 fastqq(testdata)
 ```
