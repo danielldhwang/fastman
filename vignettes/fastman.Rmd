@@ -51,7 +51,7 @@ You can also change the scale of y axis.
 ```{r}
 fastman(testdata, color=c("blue","green"), yscale = 8)
 ```
-If you just want to plot it even faster, turn on the turbo function.
+If you want to plot it even faster, turn on the turbo function and all points with P>0.1 will be removed.
 ```{r}
 fastman(testdata, color=c("blue","green"), yscale = 8, turbo = TRUE)
 ```
