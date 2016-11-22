@@ -1,10 +1,10 @@
 Package: fastman
 Type: Package
-Title: A fast way to create Manhattan plots for GWAS data
+Title: A Fast Way to Create Manhattan Plots for GWAS Data
 Version: 0.1.0
 Author: Daniel Liang-Dar Hwang
 Maintainer: Daniel Liang-Dar Hwang <danielldhwang@gmail.com>
-Description: It generates Manhattan plots from GWAS data in a fast way.
-License: GPL-3
+Description: Generates Manhattan plots from GWAS data in a fast way.
+License: GPL-3 | file LICENSE
 LazyData: TRUE
 RoxygenNote: 5.0.1
