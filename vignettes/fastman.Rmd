@@ -38,8 +38,9 @@ while(i<length(chr_base)){
 }
 
 ```
-The testdata contains three columns: CHR, BP, and P. Now create a Manhattan plot using the fastman function.
-If your own dataset has different column names, use the option (chr="",ps="",p="").
+The testdata contains three columns: CHR, BP, and P.\n 
+If your own dataset has different column names, use the options (chr="",ps="",p="") so fastman can read your data.\n
+Now create a Manhattan plot using the fastman function.
 ```{r}
 fastman(testdata)
 ```
