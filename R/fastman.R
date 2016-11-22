@@ -13,6 +13,7 @@
 #' @param yscale A numeric value for y scale.
 #' @param xlab_all Set TRUE to show labels for all chromosomes.
 #' @param turbo Set TRUE to remove all rows with P <= 0.1.
+#' @importFrom graphics abline axis mtext plot legend
 #' @export
 fastman <- function(data, chr="CHR", ps="BP", p="P", main="Manhattan plot", suggest_line=T, gws_line=T, color=c("grey","black"), chr_build="GRCh37", yscale=NA, xlab_all=F, turbo=F){
     # When turbo is TRUE, remove rows with P > 0.1, otherwise restrict the number of SNPs with P > 0.1 to ~20000.
@@ -136,9 +137,13 @@ fastman <- function(data, chr="CHR", ps="BP", p="P", main="Manhattan plot", sugg
     if(y_at[length(y_at)]!=y_max){
         y_at <- c(y_at, y_max)
     }
+    if(turbo){
+        y_min <- 1
+        y_at <- y_at[-1]
+    }
     # Calculate the -logP and plot.
     data$minus_log10_p <- -log10(as.numeric(as.character(data[,p])))
-    plot(minus_log10_p~ps2, data, axes = F, ann = F, col=data$colors, pch = 16, cex = 0.7, ylim=c(0,y_max))
+    plot(minus_log10_p~ps2, data, axes = F, ann = F, col=data$colors, pch = 16, cex = 0.7, ylim=c(y_min,y_max))
     axis(side = 2, at=y_at, labels=y_at)
     mtext(expression(-log[10](P-value)), side = 2, line = 2)
     if(xlab_all){
