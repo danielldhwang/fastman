@@ -38,7 +38,8 @@ while(i<length(chr_base)){
 }
 
 ```
-The testdata contains three columns: CHR, BP, and P. If your own dataset has different column names, use the options (chr="",ps="",p="") so fastman can read your data. Now create a Manhattan plot using the fastman function.
+The testdata contains three columns: CHR, BP, and P. If your own dataset has different column names, use the options (chr="",ps="",p="") so fastman can read your data. 
+# Create a Manhattan plot using the fastman function.
 ```{r}
 fastman(testdata)
 ```
@@ -54,7 +55,7 @@ If you just want to do plot it even faster, turn on the turbo function.
 ```{r}
 fastman(testdata, color=c("blue","green"), yscale = 8, turbo = TRUE)
 ```
-Now create a Q-Q plot using the fastqq function.
+# Create a Q-Q plot using the fastqq function.
 ```{r}
 fastqq(testdata)
 ```
