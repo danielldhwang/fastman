@@ -2,11 +2,13 @@
 title: "Intro to the fastman package"
 author: "Daniel LD Hwang"
 output: rmarkdown::html_vignette
-vignette: >
+---
+
+<!--
   %\VignetteIndexEntry{Intro to the fastman package}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
----
+-->
 
 library(qqman)
 
