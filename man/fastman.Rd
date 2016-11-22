@@ -5,8 +5,9 @@
 \title{fastman}
 \usage{
 fastman(data, chr = "CHR", ps = "BP", p = "P", main = "Manhattan plot",
-  suggest_line = T, gws_line = T, color = c("grey", "black"),
-  chr_build = "GRCh37", yscale = NA, xlab_all = F, turbo = F)
+  suggest_line = -log10(1e-05), gws_line = -log10(5e-08),
+  color = c("grey", "black"), chr_build = "GRCh37", yscale = NA,
+  xlab_all = F, turbo = F)
 }
 \arguments{
 \item{data}{A GWAS summary with columns of chromosome number, position (base pair) information, and P-value.}
@@ -19,9 +20,9 @@ fastman(data, chr = "CHR", ps = "BP", p = "P", main = "Manhattan plot",
 
 \item{main}{A string for the Title of the plot.}
 
-\item{suggest_line}{Set FALSE to remove the suggestive threshold line (p = 1e-5).}
+\item{suggest_line}{Set FALSE to remove the suggestive threshold line.}
 
-\item{gws_line}{Set FALSE to remove the genome-wide significant line (p = 5e-8).}
+\item{gws_line}{Set FALSE to remove the genome-wide significant line.}
 
 \item{color}{A string vector containg the colors to be used.}
 
