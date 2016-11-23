@@ -36,7 +36,7 @@ while(i<length(chr_base)){
     testdata <- rbind(testdata, d)            
     i <- i + 1
 }
-
+write.table(testdata, "data\testdata.RData")
 ```
 The testdata contains three columns: CHR, BP, and P. If your own dataset has different column names, use the options (chr="",ps="",p="") so fastman can read your data. 
 # Create a Manhattan plot using the fastman function.
