@@ -146,7 +146,6 @@ fastman <- function(data, chr="CHR", ps="BP", p="P", main="Manhattan plot", sugg
     }
     # Calculate the -logP and plot.
     data$minus_log10_p <- -log10(as.numeric(as.character(data[,p])))
-    par(xpd=F)
     plot(minus_log10_p~ps2, data, axes = F, ann = F, col=data$colors, pch = 16, cex = 0.7,
          xlim=c(0,chr_base[length(chr_n+1)]), ylim=c(y_min,y_max))
     axis(side = 2, at=y_at, labels=y_at)

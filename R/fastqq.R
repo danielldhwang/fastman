@@ -4,9 +4,10 @@
 #' @param data A GWAS summary with at least a column of P-value.
 #' @param p A string for the header for the column of P-value in data.
 #' @param lambda Set FALSE to exclude lambda from the plot.
+#' @param main A string for the title of the plot.
 #' @importFrom stats median qchisq runif
 #' @export
-fastqq <- function(data, p="P", lambda = T){
+fastqq <- function(data, p="P", lambda = T, main = "Q-Q plot"){
     # Calculate lambda based on the median of P-values.
     if(lambda){
         lambda_to_print<-qchisq((1-median(data[,p])),1)/qchisq(0.5,1)
@@ -72,6 +73,7 @@ fastqq <- function(data, p="P", lambda = T){
          xlim=c(0,ceiling(max(exp_minus_log_P))), ylim=c(0,ceiling(max(minus_log_P))),
          xlab = expression(Expected -log[10](P-value)), ylab = expression(Observed -log[10](P-value)))
     abline(0,1,col="red")
+    mtext(main, side = 3, line = 1)
     # Add lamdba information.
     if(lambda){
         legend("topleft", legend = bquote(lambda == .(lambda_to_print)), bty = "n")
