@@ -15,7 +15,7 @@ fastqq <- function(data, p="P", lambda = T, main = "Q-Q plot"){
     # Generate expected P-values.
     data$exp <- NA
     data <- data[order(data[,p]),]
-    data$exp <- sort(runif(nrow(data),min=0,max=1))
+    data$exp <- ppoints(nrow(data) )
     # Restrict the number of SNPs with P > 0.1 to ~20000.
     nrow_0.1 <- nrow(data[which(data[,p]>0.1),])
     i1 <- 1
