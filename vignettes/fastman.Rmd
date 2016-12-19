@@ -11,7 +11,7 @@ output: rmarkdown::html_vignette
 -->
 # Intro to the fastman package
 ```{r}
-library(qqman)
+library(fastman)
 
 # This code is used to generate test dataset.
 chr_base <- c(0, 249250621, 492449994, 690472424, 881626700, 1062541960, 1233657027, 1392795690, 1539159712, 1680373143, 1815907890, 1950914406, 2084766301, 2199936179, 2307285719, 2409817111, 2500171864, 2581367074, 2659444322, 2718573305, 2781598825, 2829728720, 2881033286)
@@ -36,7 +36,7 @@ while(i<length(chr_base)){
     testdata <- rbind(testdata, d)            
     i <- i + 1
 }
-write.table(testdata, "data\testdata.RData")
+save(testdata,file = "../data/testdata.RData")
 ```
 The testdata contains three columns: CHR, BP, and P. If your own dataset has different column names, use the options (chr="",ps="",p="") so fastman can read your data. 
 # Create a Manhattan plot using the fastman function.
