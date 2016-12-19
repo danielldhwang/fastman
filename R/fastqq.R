@@ -5,7 +5,7 @@
 #' @param p A string for the header for the column of P-value in data.
 #' @param lambda Set FALSE to exclude lambda from the plot.
 #' @param main A string for the title of the plot.
-#' @importFrom stats median qchisq runif
+#' @importFrom stats median qchisq ppoints
 #' @export
 fastqq <- function(data, p="P", lambda = T, main = "Q-Q plot"){
     # Calculate lambda based on the median of P-values.
