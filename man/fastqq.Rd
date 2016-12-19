@@ -4,7 +4,7 @@
 \alias{fastqq}
 \title{fastqq}
 \usage{
-fastqq(data, p = "P", lambda = T)
+fastqq(data, p = "P", lambda = T, main = "Q-Q plot")
 }
 \arguments{
 \item{data}{A GWAS summary with at least a column of P-value.}
@@ -12,6 +12,8 @@ fastqq(data, p = "P", lambda = T)
 \item{p}{A string for the header for the column of P-value in data.}
 
 \item{lambda}{Set FALSE to exclude lambda from the plot.}
+
+\item{main}{A string for the title of the plot.}
 }
 \description{
 Creates Q-Q plots from GWAS summaries.
