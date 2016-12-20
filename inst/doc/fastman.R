@@ -23,7 +23,7 @@ fastman <- function(data, chr="CHR", ps="BP", p="P", main="Manhattan plot", sugg
     if (!(p %in% names(data))) stop(paste("Column", p, "not found!"))
     ## make sure chr, bp, and p columns are numeric.
     if (!is.numeric(data[[chr]])) stop(paste(chr, "column should be numeric. Do you have 'X', 'Y', 'MT', etc? If so change to numbers and try again."))
-    if (!is.numeric(data[[ps]])) stop(paste(bp, "column should be numeric."))
+    if (!is.numeric(data[[ps]])) stop(paste(ps, "column should be numeric."))
     if (!is.numeric(data[[p]])) stop(paste(p, "column should be numeric."))
 
         # When turbo is TRUE, remove rows with P > 0.1, otherwise restrict the number of SNPs with P > 0.1 to ~20000.
