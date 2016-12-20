@@ -1,7 +1,7 @@
 #' fastqq
 #'
 #' Creates Q-Q plots from GWAS summaries.
-#' @param data A GWAS summary with at least a column of P-value.
+#' @param data A GWAS summary with at least a column of P-value. P-values have to be numeric.
 #' @param p A string for the header for the column of P-value in data.
 #' @param lambda Set FALSE to exclude lambda from the plot.
 #' @param main A string for the title of the plot.
