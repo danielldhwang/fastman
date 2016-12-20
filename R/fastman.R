@@ -1,7 +1,7 @@
 #' fastman
 #'
 #' Creates Manhattan plots from GWAS summaries.
-#' @param data A GWAS summary with columns of chromosome number, position (base pair) information, and P-value.
+#' @param data A GWAS summary with columns of chromosome number (X and Y chromosomes need to be replaced by 23 and 24), position (base pair) information, and P-value. ALL values have to be numeric.
 #' @param chr A string for the header of the column of chromosome number in data.
 #' @param ps A string for the header of the column of position (base pair) information in data.
 #' @param p A string for the header for the column of P-value in data.
