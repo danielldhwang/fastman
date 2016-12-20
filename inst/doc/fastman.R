@@ -16,7 +16,17 @@
 #' @importFrom graphics abline axis mtext plot legend
 #' @export
 fastman <- function(data, chr="CHR", ps="BP", p="P", main="Manhattan plot", suggest_line=-log10(1e-5), gws_line=-log10(5e-8), color=c("grey","black"), chr_build="GRCh37", yscale=NA, xlab_all=F, turbo=F){
-    # When turbo is TRUE, remove rows with P > 0.1, otherwise restrict the number of SNPs with P > 0.1 to ~20000.
+    # Check for sensible dataset ** these steps are adapted from qqman **
+    ## Make sure you have chr, bp and p columns.
+    if (!(chr %in% names(data))) stop(paste("Column", chr, "not found!"))
+    if (!(ps %in% names(data))) stop(paste("Column", ps, "not found!"))
+    if (!(p %in% names(data))) stop(paste("Column", p, "not found!"))
+    ## make sure chr, bp, and p columns are numeric.
+    if (!is.numeric(data[[chr]])) stop(paste(chr, "column should be numeric. Do you have 'X', 'Y', 'MT', etc? If so change to numbers and try again."))
+    if (!is.numeric(data[[ps]])) stop(paste(bp, "column should be numeric."))
+    if (!is.numeric(data[[p]])) stop(paste(p, "column should be numeric."))
+
+        # When turbo is TRUE, remove rows with P > 0.1, otherwise restrict the number of SNPs with P > 0.1 to ~20000.
     if(turbo){
         data <- data[which(data[,p]<=0.1),]
     }else{
@@ -72,28 +82,29 @@ fastman <- function(data, chr="CHR", ps="BP", p="P", main="Manhattan plot", sugg
     # Select whether the SNPs position info is based on GRCh38 or GRCh38
     if(chr_build=="GRCh37"){
         chr_base <- c(0, 249250621, 492449994, 690472424, 881626700, 1062541960, 1233657027, 1392795690, 1539159712, 1680373143, 1815907890, 1950914406, 2084766301, 2199936179, 2307285719, 2409817111, 2500171864, 2581367074, 2659444322, 2718573305, 2781598825, 2829728720, 2881033286, 3036303846, 3095677412)
-        chr_label <- c(124625310.5, 370850307.5, 591461209, 786049562, 972084330, 1148099494, 1313226359, 1465977701, 1609766428, 1748140517, 1883411148, 2017840354, 2142351240, 2253610949, 2358551415, 2454994488, 2540769469, 2620405698, 2689008814, 2750086065, 2805663773, 2855381003, 2958668566, 3065990629)
+        chr_label <- c(124625310.5, 370850307.5, 591461209, 786049562, 972084330, 1148099494, 1313226359, 1465977701, 1609766428, 1748140517, 1883411148, 2017840354, 2142351240, 2253610949, 2358551415, 2454994488, 2540769469, 2620405698, 2689008814, 2750086065, 2815663773, 2865381003, 2958668566, 3065990629)
     }
     if(chr_build=="GRCh38"){
         chr_base <- c(0, 248956422, 491149951, 689445510, 879660065, 1061198324, 1232004303, 1391350276, 1536488912, 1674883629, 1808681051, 1943767673, 2077042982, 2191407310, 2298451028, 2400442217, 2490780562, 2574038003, 2654411288, 2713028904, 2777473071, 2824183054, 2875001522, 3031042417, 3088269832)
         chr_label <- c(124478211, 370053186.5, 590297730.5, 784552787.5, 970429194.5, 1146601314, 1311677290, 1463919594, 1605686271, 1741782340, 1876224362, 2010405328, 2134225146, 2244929169, 2349446623, 2445611390, 2532409283, 2614224646, 2683720096, 2745250988, 2800828063, 2849592288, 2953021970, 3059656125)
     }
-    # Check if any SNP is on sex chromosomes.
+
+    # Assign chromosome labels and their positions
     chr_n <- c(1:22)
     xlabel <- c(1:22)
     x_at <- chr_label[1:22]
-    if("X" %in% data[,chr] || 23 %in% data[,chr]){
+
+    # Check if any SNP is on sex chromosomes.
+    if(24 %in% data[,chr]){
+        chr_n <- c(chr_n,23,24)
+        xlabel <- c(xlabel,"X","Y")
+        x_at <- chr_label[1:24]
+    } else if(23 %in% data[,chr]){
         chr_n <- c(chr_n,23)
-        data[,chr][data[,chr]=="X"] <- 23
         xlabel <- c(xlabel,"X")
         x_at <- chr_label[1:23]
     }
-    if("Y" %in% data[,chr] || 24 %in% data[,chr]){
-        chr_n <- c(chr_n,24)
-        data[,chr][data[,chr]=="Y"] <- 24
-        xlabel <- c(xlabel,"Y")
-        x_at <- chr_label[1:24]
-    }
+
     # Calculate the positions to plot for SNPs on chromosome 2 and after.
     data$ps2 <- NA
     for (i in chr_n){
@@ -101,7 +112,7 @@ fastman <- function(data, chr="CHR", ps="BP", p="P", main="Manhattan plot", sugg
     }
     # Set colors
     data$colors <- NA
-    for (i in c(1:length(xlabel))){
+    for (i in chr_n){
         temp_n <- i%%length(color)
         if(temp_n==0){
             col<-color[length(color)]
