@@ -10,7 +10,7 @@ fastman(data, chr = "CHR", ps = "BP", p = "P", main = "Manhattan plot",
   xlab_all = F, turbo = F)
 }
 \arguments{
-\item{data}{A GWAS summary with columns of chromosome number, position (base pair) information, and P-value.}
+\item{data}{A GWAS summary with columns of chromosome number (X and Y chromosomes need to be replaced by 23 and 24), position (base pair) information, and P-value. ALL values have to be numeric.}
 
 \item{chr}{A string for the header of the column of chromosome number in data.}
 
