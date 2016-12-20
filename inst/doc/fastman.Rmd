@@ -12,12 +12,13 @@ output: rmarkdown::html_vignette
 # Intro to the fastman package
 ```{r}
 library(fastman)
+
 # This code is used to generate test dataset.
-chr_base <- c(0, 249250621, 492449994, 690472424, 881626700, 1062541960, 1233657027, 1392795690, 1539159712, 1680373143, 1815907890, 1950914406, 2084766301, 2199936179, 2307285719, 2409817111, 2500171864, 2581367074, 2659444322, 2718573305, 2781598825, 2829728720, 2881033286)
+chr_base <- c(0, 249250621, 492449994, 690472424, 881626700, 1062541960, 1233657027, 1392795690, 1539159712, 1680373143, 1815907890, 1950914406, 2084766301, 2199936179, 2307285719, 2409817111, 2500171864, 2581367074, 2659444322, 2718573305, 2781598825, 2829728720, 2881033286, 3036303846, 3095677412)
 
 set.seed(1)
 testdata <- data.frame()
-gws_chr <- round(runif(1,1,22))
+gws_chr <- round(runif(1,1,24))
 i <- 1
 while(i<length(chr_base)){
     n1 <- chr_base[i+1] - chr_base[i]
@@ -35,7 +36,7 @@ while(i<length(chr_base)){
     testdata <- rbind(testdata, d)            
     i <- i + 1
 }
-save(testdata, file = "../../data/testdata.RData")
+save(testdata,file = "../data/testdata.RData", compress = "xz", compression_level = 9)
 ```
 The testdata contains three columns: CHR, BP, and P. If your own dataset has different column names, use the options (chr="",ps="",p="") so fastman can read your data. 
 # Create a Manhattan plot using the fastman function.
