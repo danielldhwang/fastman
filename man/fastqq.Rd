@@ -7,7 +7,7 @@
 fastqq(data, p = "P", lambda = T, main = "Q-Q plot")
 }
 \arguments{
-\item{data}{A GWAS summary with at least a column of P-value.}
+\item{data}{A GWAS summary with at least a column of P-value. P-values have to be numeric.}
 
 \item{p}{A string for the header for the column of P-value in data.}
 
