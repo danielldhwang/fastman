@@ -8,6 +8,12 @@
 #' @importFrom stats median qchisq ppoints
 #' @export
 fastqq <- function(data, p="P", lambda = T, main = "Q-Q plot"){
+    # Check for sensible dataset ** these steps are adapted from qqman **
+    ## Make sure you have p column.
+    if (!(p %in% names(data))) stop(paste("Column", p, "not found!"))
+    ## make sure p column is numeric.
+    if (!is.numeric(data[[p]])) stop(paste(p, "column should be numeric."))
+
     # Calculate lambda based on the median of P-values.
     if(lambda){
         lambda_to_print<-qchisq((1-median(data[,p])),1)/qchisq(0.5,1)
