@@ -170,7 +170,7 @@ fastman2 <- function(data, snp="SNP", chr="CHR", ps="BP", p="P", main="Manhattan
        ylim=c(y_min,y_max))
   
   axis(side = 2, at=y_at, labels=y_at)
-  mtext(expression(-log[10](P-value)), side = 2, line = 2)
+  mtext(expression(-log[10]~"p-value"), side = 2, line = 2)
   
   # SNPs to highlight
   if(length(snp_list)>0){
