@@ -175,7 +175,7 @@ fastman2 <- function(data, snp="SNP", chr="CHR", ps="BP", p="P", main="Manhattan
   # SNPs to highlight
   if(length(snp_list)>0){
     data[data[,snp] %in% snp_list, "colors"] <- color2
-    points(data[data[,snp] %in% snp_list, "ps2"],data[data[,snp] %in% snp_list, "minus_log10_p"], col=color2, pch = 16, cex = 0.8)
+    points(data[data[,snp] %in% snp_list, "ps2"],data[data[,snp] %in% snp_list, "minus_log10_p"], col=color2, pch = 16, cex = 0.4)
   }
   
   if(xlab_all){
