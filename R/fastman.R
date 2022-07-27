@@ -165,7 +165,7 @@ fastman2 <- function(data, snp="SNP", chr="CHR", ps="BP", p="P", main="Manhattan
   
   # Calculate the -logP and plot.
   data$minus_log10_p <- -log10(as.numeric(as.character(data[,p])))
-  plot(minus_log10_p~ps2, data, axes = F, ann = F, col=data$colors, pch = 16, cex = 0.5,
+  plot(minus_log10_p~ps2, data, axes = F, ann = F, col=data$colors, pch = 16, cex = 0.3,
        xlim=c(0,chr_base[length(chr_n+1)]), 
        ylim=c(y_min,y_max))
   
